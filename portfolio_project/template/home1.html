@@ -1,0 +1,646 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-abc123" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-abc123" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 10px; /* Ensure content below navbar is visible */
+              font-variant: small-caps;
+
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #0BCEAF; /* Background color of the navbar */
+            transition: background-color 0.3s ease-in-out;
+            height: 80px; /* Adjusted height of the navbar */
+            padding: 15px 0; /* Padding for top and bottom */
+        }
+
+        .navbar .container {
+            justify-content: space-between; /* Space items evenly */
+        }
+
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: white !important;
+            transition: color 0.3s ease-in-out;
+            font-size: 1.2rem; /* Larger font size for the brand */
+            margin-left: 20px; /* Space between links */
+        }
+
+        .navbar .nav-link:hover {
+                color: #8697a8 !important; /* Lighter shade for hover */
+
+        }
+
+        .home-section {
+            height: 100vh;
+            background-color: #0BCEAF;
+            padding-top: 50px; /* Height of the navbar */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-section img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px; /* Space between image and text */
+        }
+
+        .home-section .intro-text {
+            text-align: left; /* Align text to the left */
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .round-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #0BCEAF;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px; /* Space below text */
+        }
+
+        .round-button:hover {
+            background-color: #f7f8f9/* Lighter shade on hover */
+            text-decoration:none;
+                color: #0BCEAF; /* Maintain text color on hover */
+
+        }
+
+        .round-button:active {
+    text-decoration: none; /* Ensure no underline on active state */
+}
+
+            .highlighted-text {
+            font-size: 1.5rem; /* Increased font size */
+            color: #0BCEAF; /* Highlight color */
+            transition: font-size 0.3s ease-in-out; /* Smooth transition for font size */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section {
+            animation: fadeIn 2s;
+        }
+
+        .contact-info ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .contact-info ul li {
+            display: inline-block; /* Display icons and text horizontally */
+            margin-right: 20px; /* Adjust spacing between icons */
+                color: #0BCEAF; /* Custom color */
+
+        }
+
+        .contact-info ul li a {
+            text-decoration: none; /* Remove underline from links */
+            color: #333; /* Set text color */
+        }
+
+        .contact-info ul li i {
+            margin-right: 5px; /* Adjust spacing between icon and text */
+            font-size: 20px; /* Adjust icon size */
+            vertical-align: middle; /* Align icons vertically */
+        }
+
+                 .skill-bars {
+            margin: 20px 0;
+        }
+
+        .skill-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-title {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .progress {
+            flex: 5;
+            height: 25px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #ddd;
+        }
+
+        .progress .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.6s ease;
+        }
+
+        .progress-bar-html {
+            background-color: #0BCEAF; /* Green */
+        }
+
+        .progress-bar-css {
+            background-color: #0BCEAF; /* Blue */
+        }
+
+        .progress-bar-js {
+            background-color: #0BCEAF; /* Orange */
+        }
+
+        .progress-bar-django {
+            background-color: #0BCEAF; /* Red */
+        }
+
+        .progress-bar-mysql {
+            background-color: #0BCEAF; /* Dark Blue */
+        }
+
+
+
+                .education-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .education-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .education-item {
+            margin-bottom: 40px;
+        }
+
+        .education-item .institution-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .education-item .degree {
+            font-size: 18px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .education-item .duration {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .education-item .location {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .education-item .achievements {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 10px;
+        }
+
+        .contact-info ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-info ul li a:hover {
+            text-decoration: underline;
+        }
+
+         .education-section {
+            padding: 60px 0;
+        }
+
+        .education-column {
+            border-right: 1px solid #ddd; /* Line between columns */
+            padding: 20px;
+        }
+
+        .education-column:last-child {
+            border-right: none; /* Remove border from last column */
+        }
+
+
+ .projects-section {
+            padding: 60px 0;
+        }
+
+        .projects-section h2 {
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            perspective: 1000px;
+            margin-bottom: 30px;
+        }
+
+        .project-card-inner {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Fixed height for the card */
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover .project-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .project-card-front, .project-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden; /* Ensure content stays within bounds */
+        }
+
+        .project-card-front {
+            background: #f8f9fa;
+        }
+
+        .project-card-back {
+            background: #fff;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image fits within the card */
+            border-radius: 10px 10px 0 0;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+
+
+         .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            margin: 0 auto; /* Center the form */
+            max-width: 600px; /* Set a maximum width */
+        }
+
+        .contact-form .form-control {
+            border-radius: 20px;
+        }
+
+        .contact-form .btn {
+            border-radius: 20px;
+            background-color: #0BCEAF;
+            border: none;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #0aaf99;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" style="font-size: 1.6rem;" href="#"><strong>Portfolio</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav" style="margin-left:300px;">
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{% static 'img/teddy.jpg' %}" alt="Your Photo" class="rounded-circle">
+                </div>
+                <div class="col-md-6 intro-text">
+                    <p>&nbsp;</p>
+                    <h1 style="font-family:Optima;font-size:50px;">I'm</h1>
+                    <h1 class="mt-3" style="font-family:Optima;font-size:60px;"><b>YAMINI VASA</b></h1>
+                    <p style="font-size:22px;">Full stack developer</p>
+                    <a href="{% static 'documents/Yamini_Resume.pdf' %}" download="Yamini_Vasa_Resume.pdf" class="round-button">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+ <section id="about" class="section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-content">
+                        <h2 style="color:#0BCEAF;">Let's Introduce about myself</h2>
+                        &nbsp;
+                        <p>"I'm someone passionate about web development, especially using Django, HTML, CSS, Bootstrap, and MySQL. Currently working on projects that showcase my skills and exploring new ideas to make a meaningful impact.".</p>
+                        <div class="contact-info">
+                            <ul class="list-unstyled">
+
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <a href="tel:+1234567890">Phone</a>
+                                </li>
+                                <li>
+                                    <i class="far fa-envelope"></i>
+                                    <a href="https://mail.google.com/mail/u/0/#inbox">Email</a>
+                                </li>
+                                <li>
+                                    <i class="fab fa-github"></i>
+                                    <a href="https://github.com/yaminivasa1524" target="_blank">GitHub</a>
+                                </li>
+                                <li>
+                                    <i class="fab fa-linkedin"></i>
+                                    <a href="https://www.linkedin.com/in/vasa-yamini-siva-ganeswari-bab681249/
+
+" target="_blank">LinkedIn</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-image">
+                        <img src="{% static 'img/teddy.jpg' %}"  style="width:350px;margin-left:95px;height:350px;            margin-right: 15px; /* Space between image and text */
+"alt="About Me Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills Section -->
+ <section id="skills" class="section">
+        <div class="container">
+            <h2 class="text-center" style="color:#0BCEAF;">Skills</h2>
+            <div class="skill-bars">
+                <div class="skill-bar">
+                    <div class="skill-title">HTML</div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-html" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-title">CSS</div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-css" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-title">JavaScript</div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-js" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-title">Django</div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-django" role="progressbar" style="width: 80%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-title">MySQL</div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-mysql" role="progressbar" style="width: 70%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+     <section id="education" class="education-section bg-light">
+        <div class="container">
+            <h2 class="text-center" style="color:#0BCEAF;">Education background</h2>
+            &nbsp;
+            <div class="row">
+                <div class="col-md-4 education-column">
+                    <h4>2021-24</h4>
+                    <p>SRKR Engineering College, Bhimavaram</p>
+                    <p>Bachelor of Technology, Computer Science & Engineering.</p>
+                    <p>8.60 CGPA</p>
+                </div>
+                <div class="col-md-4 education-column">
+                    <h4>2018-21</h4>
+                    <p>A.A.N.M & V.V.R.S.R Polytechnic, Gudlavalleru</p>
+                    <p>SBTET, Computer Science & Engineering</p>
+                    <p>88.18%</p>
+                </div>
+                <div class="col-md-4 education-column">
+                    <h4>2018</h4>
+                    <p>B.G.K.Z.P.High School, Pedana</p>
+                    <p>SSC</p>
+                    <p>8.3 GPA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="text-center" style="color:#0BCEAF;">Projects</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="{% static 'img/exam.jpg' %}" alt="Project 1">
+                            </div>
+                            <div class="project-card-back">
+                                <div class="project-content">
+                                    <h4 class="project-title"><b>Exam Seating Arrangement</b></h4>
+                                    <p class="project-duration">Technologies Used: Java, HTML, CSS, Bootstrap, MySQL</p>
+                                    <p class="project-details">The project is totally built at administrative end, only the administrator is guaranteed the access. The goal of the project is to reduce the manual work for managing exam seating. It tracks all the details about the Student Roll Number and the Rooms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="{% static 'img/kalamkari.jpg' %}" alt="Project 2">
+                            </div>
+                            <div class="project-card-back">
+                                <div class="project-content">
+                                    <h4 class="project-title"><b>Kalamkari Store</b></h4>
+                                    <p class="project-duration">Technologies Used: HTML, CSS, Bootstrap</p>
+                                    <p class="project-details">The main objective for this project to increase the awareness of the Kalamkari.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="{% static 'img/FoodOrdering.jpg' %}" alt="Project 3">
+                            </div>
+                            <div class="project-card-back">
+                                <div class="project-content">
+                                    <h4 class="project-title"><b>Food Ordering System</b></h4>
+                                    <p class="project-duration">Technologies Used: Python, Django, HTML, CSS, Bootstrap, MySQL</p>
+                                    <p class="project-details">Main purpose is to maintain track of information such as Item Category, Food, Delivery Address, Order and Shopping Cart. It keeps track of information and saves the Delivery Address, Order, and Cart information.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section bg-light">
+        <div class="container">
+            <h2 class="text-center" style="color:#0BCEAF;">Contact Me</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-3" style="background-color: #0BCEAF;
+" >
+        <p>&copy; 2024 Yamini Vasa. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap and JavaScript links -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery script for navbar background change on scroll -->
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) { /* Adjust the scroll amount as needed */
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+    </script>
+
+ <script>
+        $(document).ready(function() {
+            $('.portfolio-img').click(function() {
+                $(this).toggleClass('highlighted-img'); // Toggle highlighted class on image
+                $('.intro-text').toggleClass('highlighted-text'); // Toggle highlighted class on text
+            });
+        });
+    </script>
+</body>
+</html>
